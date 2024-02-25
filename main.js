@@ -1,4 +1,6 @@
 // Create a reference for the canvas
+canvas = document.getElementById('myCanvas');
+ctx = canvas.getContext("2d");
 
 img_width = 300;
 img_height = 100;
@@ -20,39 +22,72 @@ function uploadimg() {
 }
 
 //Escreva um código para obter o evento key-pressed
+window.addEventListener("keydown", my_keydown);
 
 function my_keydown(e)
 {
 	keyPressed = e.keyCode;
 	console.log(keyPressed);
 	
-		if((keyPressed >=97 && keyPressed<=122)|| (keyPressed >=65 && keyPressed<=90))
+		if((keyPressed >=97 && keyPressed<=122)|| (keyPressed >=65 && keyPressed<=90)){
 		//Escreva um código para verificar o tipo de tecla pressionada
+
+		aplhabetkey();
+			document.getElementById("d1").innerHTML="Você pressionou uma tecla alfabeto";
+			console.log("alphabet key");
+		
+		}
+		else if(keyPressed >=48 && keyPressed<=57)
+		{
+		numberkey();
+		document.getElementById("d1").innerHTML="Você pressionou uma tecla numero"
+		console.log("Number Key");
+		}
+
+		else if (keyPressed >=37 && keyPressed<=40)
+		{
+			arrowkey();
+			document.getElementById("d1").innerHTML="Você pressionou uma seta";
+			console.log("Seta");
+			
+		}
+
+		else if ((keyPressed ==17)|| (keyPressed ==18 || keyPressed ==27))
+		{
+			pecialkey();
+			document.getElementById("d1").innerHTML="Você pressionou ctrl/esc/alt";
+			console.log("special key");
+		}
 	else{
 		otherkey();
 		document.getElementById("d1").innerHTML="You pressed symbol or other key";
+		console.log("aplhabet key");
 	}
 }
 
 function aplhabetkey()
 {
-	//envie as imagens com suas respectivas mensagens. 
-
+	img_image="alfabeto.png";
+	add();
 }
 function numberkey()
 {
-	
+	img_image="numero.png";
+	add()
 }
 function arrowkey()
 {
+	img_image="direcional.png";
+	add()
 }
 function specialkey()
 {
-	
+	img_image="especial.png";
+	add()
 }
 function otherkey()
 {
-	img_image="otherkey.png";
+	img_image="outras.png";
 	add();
 }
 	
